@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Amazing Home</title>
+</head>
+<body>
+<header id="header-wrap">
+  <!-- Navbar Start -->
+  <nav class="navbar navbar-expand-lg fixed-top scrolling-navbar indigo">
+    <div class="container">
+          <li class="nav-item">
+            <a class="nav-link" href='{% url "home" %}'>
+              Home
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href='{% url "blog:list" %}'>
+              Blog
+            </a>
+          </li>
+      <li class="nav-item">
+            <a class="nav-link" href='{% url "blog:new" %}'>
+              New
+            </a>
+          </li>
+    </div>
+  </nav>
+</header>
+<h1>Welcome Home</h1>
+      <div class="container">
+{% if blog in blog %}
+{% for blog in blog %}
+<h3><a href="{{ blog.get_absolute_url }}">{{ blog.title }}</a></h3><br/>
+<p>{{ blog.content }}</p><hr/>
+{% endfor %}
+        {% else %}
+        <p> Nothing to see here!</p>
+        {% endif %}
+      </div>
+
+</body>
+</html>
